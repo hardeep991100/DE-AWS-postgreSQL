@@ -504,5 +504,5 @@ else:
     
 logger.info("***************** Staging table updated successfully that we completed the process *****************")
 
-input("Press Enter to exit...")
+# input("Press Enter to exit...")
 
