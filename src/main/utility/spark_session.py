@@ -71,6 +71,19 @@
 #     return spark
 
 
+# from pyspark.sql import SparkSession
+# from src.main.utility.logging_config import logger
+
+# def spark_session():
+#     spark = (
+#         SparkSession.builder
+#         .appName("de_project")
+#         .getOrCreate()
+#     )
+#     logger.info("Spark session created successfully")
+#     return spark
+
+
 from pyspark.sql import SparkSession
 from src.main.utility.logging_config import logger
 
@@ -78,7 +91,10 @@ def spark_session():
     spark = (
         SparkSession.builder
         .appName("de_project")
+        .config("spark.ui.enabled", "true")
+        .config("spark.ui.port", "4040")
         .getOrCreate()
     )
+
     logger.info("Spark session created successfully")
     return spark

@@ -28,6 +28,24 @@ services:
     networks:
       - spark-net
 
+  # spark-job:
+  #   build:
+  #     context: ..
+  #     dockerfile: docker/Dockerfile
+  #   container_name: spark-job
+  #   depends_on:
+  #     - spark-master
+  #   command: >
+  #     /opt/spark/bin/spark-submit
+  #     --master spark://spark-master:7077
+  #     --jars /opt/spark/jars/postgresql-42.7.8.jar
+  #     src/main/transformations/jobs/main.py
+  #   env_file:
+  #     - ../.env
+  #   volumes:
+  #     - ../data:/opt/spark-data
+  #   networks:
+  #     - spark-net
   spark-job:
     build:
       context: ..
@@ -38,8 +56,13 @@ services:
     command: >
       /opt/spark/bin/spark-submit
       --master spark://spark-master:7077
+      --conf spark.driver.bindAddress=0.0.0.0
+      --conf spark.driver.host=spark-job
+      --conf spark.ui.port=4040
       --jars /opt/spark/jars/postgresql-42.7.8.jar
       src/main/transformations/jobs/main.py
+    ports:
+      - "4040:4040"
     env_file:
       - ../.env
     volumes:
