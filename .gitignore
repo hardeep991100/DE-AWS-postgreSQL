@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Environment variables
+.env
+
+.vscode/
+
+# Spark
+spark-warehouse/
+*.crc
+
+# Logs
+*.log
+
+# Local data & outputs
+data/
+file_from_s3/
+error_files/
+customer_data_mart/
+sales_team_data_mart/
+sales_partition_data/
+
+# OS files
+Thumbs.db
+.DS_Store
+
+jars/*.jar
