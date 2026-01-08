@@ -40,7 +40,7 @@ jobs:
       # 6️⃣ Build Docker image
       - name: Build Docker image
         run: |
-    	docker build --no-cache -f docker/Dockerfile -t de-project:ci .
+    		docker build --no-cache -f docker/Dockerfile -t de-project:ci .
 
       # 7️⃣ (Optional) Push image to Docker Hub
       - name: Push Docker image
