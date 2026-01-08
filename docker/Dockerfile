@@ -38,7 +38,9 @@ RUN pip3 install --no-cache-dir -r /tmp/requirements.txt
 RUN pip3 install pycryptodomex
 
 # JDBC driver
-COPY jars/postgresql-42.7.8.jar /opt/spark/jars/
+# COPY jars/postgresql-42.7.8.jar /opt/spark/jars/
+RUN curl -o /opt/spark/jars/postgresql-42.7.8.jar \
+  https://jdbc.postgresql.org/download/postgresql-42.7.8.jar
 
 # Project code
 COPY src /opt/project/src
