@@ -2,9 +2,9 @@ name: Data Engineering CI Pipeline
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
@@ -40,9 +40,9 @@ jobs:
       # 6️⃣ Build Docker image
       - name: Build Docker image
         run: |
-    		docker build --no-cache -f docker/Dockerfile -t de-project:ci .
+          docker build --no-cache -f docker/Dockerfile -t de-project:ci .
 
-      # 7️⃣ (Optional) Push image to Docker Hub
+      # 7️⃣ Push image to Docker Hub
       - name: Push Docker image
         run: |
           docker tag de-project:ci ${{ secrets.DOCKER_USERNAME }}/de-project:latest
